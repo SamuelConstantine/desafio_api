@@ -43,5 +43,11 @@ export default class VeiculosController {
         return veiculo.editAviso(campos)
     }
 
+    public veiculosUser(context: HttpContextContract) {
+        let veiculo = new Veiculo();
+        let user = context.params.user;
+        return veiculo.veiculosUsers(user);
+    }
+
     
 }

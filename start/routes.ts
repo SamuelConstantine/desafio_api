@@ -39,5 +39,6 @@ Route.group(() => {
   Route.post('create', 'VeiculosController.create')
   Route.post('/filtro/:campo', 'VeiculosController.filtrado')
   Route.get('/full', 'VeiculosController.veiculos')
+  Route.get('/user/:user', 'VeiculosController.veiculosUser')
   Route.post('/edit', 'VeiculosController.editadoAviso')
 }).prefix('/veiculos');

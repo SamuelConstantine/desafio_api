@@ -68,4 +68,29 @@ export default class Veiculo extends BaseModel {
         console.log('Ediatado', editado)
         return editado;
     }
+
+    //Todos os veículos associados a um usuário
+    public async veiculosUsers(user){
+        let dados;
+
+        dados = await Database.from('veiculos')
+                              .select('*')
+                              .join('users AS u', 'id_user', 'u.id')
+                              .where('id_user', user)
+
+        console.log(dados)
+
+        return dados
+    }
+
+    // public async editQuantidade(use,veiculo) {
+    //     let editado;
+    //     console.log('CAMPOS',use)
+
+    //     editado = await Database.from('veiculos')
+    //                             .update('id_user', use)
+    //                             .where('id', veiculo)
+
+    //     console.log('Ediatado',editado)
+    // }
 }
