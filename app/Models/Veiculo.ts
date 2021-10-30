@@ -80,6 +80,7 @@ export default class Veiculo extends BaseModel {
         return dados
     }
 
+    // Editar relação 
     public async editQuantidade(user,veiculo) {
         let editado;
 

@@ -30,13 +30,13 @@ Route.get('/', async () => {
 
 
 Route.group(() => {
-  // Cadastrar usuario
+  // Cadastrar usuário
   Route.post('users', 'UsersController.create')
 
-  // Verificar usuario
+  // Verificar usuário
   Route.post('login', 'AuthController.store');
 
-  // Listar todos os Usuarios
+  // Listar todos os usuários
   Route.get('all','UsersController.full')
 }).prefix('/user');
 
@@ -51,12 +51,12 @@ Route.group(() => {
   // Listar todo os veículos
   Route.get('/full', 'VeiculosController.veiculos')
 
-  // Listar Carros relacionados ao usuario
+  // Listar Carros relacionados ao usuário
   Route.get('/user/:user', 'VeiculosController.veiculosUser')
 
-  // Editar campos do veiculo selecionado
+  // Editar campos do veículo selecionado
   Route.post('/edit/:id', 'VeiculosController.editadarVeiculos')
 
-  // Editar a relação do veiculo ao usuario
+  // Editar a relação do veículo ao usuário
   Route.post('/quantidade/:user/:id', 'VeiculosController.editQuantidade')
 }).prefix('/veiculos');
