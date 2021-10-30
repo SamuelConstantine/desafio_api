@@ -37,16 +37,25 @@ export default class VeiculosController {
         return veiculo.veiculos();
     }
 
-    public editadoAviso(context:HttpContextContract){
+    public editadarVeiculos(context:HttpContextContract){
         let veiculo = new Veiculo();
-        let campos = context.request.all();  
-        return veiculo.editAviso(campos)
+        let campos = context.request.all();
+        let id = context.params.id;  
+        return veiculo.editVeiculos(campos,id)
     }
 
     public veiculosUser(context: HttpContextContract) {
         let veiculo = new Veiculo();
         let user = context.params.user;
         return veiculo.veiculosUsers(user);
+    }
+
+    public editQuantidade(context:HttpContextContract) {
+        let veiculo = new Veiculo();
+        let user = context.params.user;
+        let id = context.params.id;
+        return veiculo.editQuantidade(user,id)
+
     }
 
     

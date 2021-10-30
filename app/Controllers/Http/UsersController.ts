@@ -3,6 +3,7 @@ import User from 'App/Models/User';
 
 export default class UsersController {
 
+    //Criar  user
     public async create({request}:HttpContextContract) {
         const {email, password} = request.all();
 
@@ -14,5 +15,13 @@ export default class UsersController {
 
         return user;
     }
+
+    //Listar todos users
+    public async full() {
+        const all = await User.all();
+        return all;
+    }
+
+
 
 }

@@ -31,7 +31,7 @@ export default class Veiculo extends BaseModel {
     public updatedAt: DateTime
 
 
-    // Filtrar Veiculos (ID, PLACA, DESCRIÇÃO, COR, MODELO E ENDEREÇO DO VEÍCULO.)
+    // Filtrar Veículos (ID, PLACA, DESCRIÇÃO, COR, MODELO E ENDEREÇO DO VEÍCULO.)
     public async filtro(campos) {
 
         let filtrado;
@@ -44,7 +44,7 @@ export default class Veiculo extends BaseModel {
     };
 
 
-    // Lista de Veiculos
+    // Lista de Veículos
     public async veiculos() {
 
         let veiculos;
@@ -56,16 +56,14 @@ export default class Veiculo extends BaseModel {
     }
 
 
-    // Editar Veiculos
-    public async editAviso(edit) {
+    // Editar Veículos
+    public async editVeiculos(edit, id) {
         let editado;
-        console.log('CAMPOS', edit)
 
         editado = await Database.from('veiculos')
                                 .update(edit)
-                                .where('id', 10)
+                                .where('id', id)
 
-        console.log('Ediatado', editado)
         return editado;
     }
 
@@ -78,19 +76,17 @@ export default class Veiculo extends BaseModel {
                               .join('users AS u', 'id_user', 'u.id')
                               .where('id_user', user)
 
-        console.log(dados)
 
         return dados
     }
 
-    // public async editQuantidade(use,veiculo) {
-    //     let editado;
-    //     console.log('CAMPOS',use)
+    public async editQuantidade(user,veiculo) {
+        let editado;
 
-    //     editado = await Database.from('veiculos')
-    //                             .update('id_user', use)
-    //                             .where('id', veiculo)
+        editado = await Database.from('veiculos')
+                                .update('id_user', user)
+                                .where('id', veiculo)
 
-    //     console.log('Ediatado',editado)
-    // }
+        return editado;
+    }
 }

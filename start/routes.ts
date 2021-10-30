@@ -28,17 +28,35 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.post('users', 'UsersController.create')
-
-Route.post('veiculos', 'VeiculosController.create')
-
-Route.post('login', 'AuthController.store');
-
 
 Route.group(() => {
+  // Cadastrar usuario
+  Route.post('users', 'UsersController.create')
+
+  // Verificar usuario
+  Route.post('login', 'AuthController.store');
+
+  // Listar todos os Usuarios
+  Route.get('all','UsersController.full')
+}).prefix('/user');
+
+Route.group(() => {
+
+  // Cadastrar veículos
   Route.post('create', 'VeiculosController.create')
+
+  // Filtrar veículos
   Route.post('/filtro/:campo', 'VeiculosController.filtrado')
+
+  // Listar todo os veículos
   Route.get('/full', 'VeiculosController.veiculos')
+
+  // Listar Carros relacionados ao usuario
   Route.get('/user/:user', 'VeiculosController.veiculosUser')
-  Route.post('/edit', 'VeiculosController.editadoAviso')
+
+  // Editar campos do veiculo selecionado
+  Route.post('/edit/:id', 'VeiculosController.editadarVeiculos')
+
+  // Editar a relação do veiculo ao usuario
+  Route.post('/quantidade/:user/:id', 'VeiculosController.editQuantidade')
 }).prefix('/veiculos');
