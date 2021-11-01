@@ -25,31 +25,31 @@ export default class VeiculosController {
         });
 
         return user;
-    }
+    };
 
     public filtrado(context: HttpContextContract) {
         let veiculo = new Veiculo();
         let campo = context.params.campo;
         return veiculo.filtro(campo);
-    }
+    };
 
     public veiculos(context: HttpContextContract) {
         let veiculo = new Veiculo();
         return veiculo.veiculos();
-    }
+    };
 
     public editadarVeiculos(context:HttpContextContract){
         let veiculo = new Veiculo();
         let campos = context.request.all();
         let id = context.params.id;  
         return veiculo.editVeiculos(campos,id);
-    }
+    };
 
     public veiculosUser(context: HttpContextContract) {
         let veiculo = new Veiculo();
         let user = context.params.user;
         return veiculo.veiculosUsers(user);
-    }
+    };
 
     public editQuantidade(context:HttpContextContract) {
         let veiculo = new Veiculo();
@@ -57,7 +57,7 @@ export default class VeiculosController {
         let id = context.params.id;
         return veiculo.editQuantidade(user,id);
 
-    }
+    };
 
     public coordenada(context:HttpContextContract) {
         let veiculo = new Veiculo();
@@ -65,7 +65,7 @@ export default class VeiculosController {
         let lon = context.params.lon;
         return veiculo.latLon(lat, lon);
 
-    }
+    };
 
     
 }

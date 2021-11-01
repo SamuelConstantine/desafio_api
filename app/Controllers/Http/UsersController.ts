@@ -13,13 +13,13 @@ export default class UsersController {
         });
 
         return user;
-    }
+    };
 
     //Listar todos users
     public async full() {
         const all = await User.all();
         return all;
-    }
+    };
 
 
 }

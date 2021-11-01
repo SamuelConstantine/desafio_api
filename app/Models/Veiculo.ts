@@ -60,7 +60,7 @@ export default class Veiculo extends BaseModel {
                                
         return result;
 
-    }
+    };
 
 
     // Lista de Veículos
