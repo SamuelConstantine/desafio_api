@@ -16,6 +16,12 @@ export default class Veiculo extends BaseModel {
     public cor: string
 
     @column()
+    public longitude: string
+    
+    @column()
+    public latitude: string 
+
+    @column()
     public modelo: string
 
     @column()
@@ -37,11 +43,24 @@ export default class Veiculo extends BaseModel {
         let filtrado;
 
         filtrado = await Database.from('veiculos')
-            .select("*")
-            .orderBy(campos)
+                                 .select("*")
+                                 .orderBy(campos)
 
-        return filtrado
+        return filtrado;
     };
+
+    // Filtrar por lon e lat
+    public async latLon(lat, lon) {
+        let result;
+
+        result = await Database.from('veiculos')
+                               .select('*')
+                               .where('latitude', lat)
+                               .where('longitude', lon)
+                               
+        return result;
+
+    }
 
 
     // Lista de Veículos
@@ -50,10 +69,10 @@ export default class Veiculo extends BaseModel {
         let veiculos;
 
         veiculos = await Database.from('veiculos')
-            .select("*")
+                                 .select("*")
 
-        return veiculos
-    }
+        return veiculos;
+    };
 
 
     // Editar Veículos
@@ -65,7 +84,7 @@ export default class Veiculo extends BaseModel {
                                 .where('id', id)
 
         return editado;
-    }
+    };
 
     //Todos os veículos associados a um usuário
     public async veiculosUsers(user){
@@ -77,8 +96,8 @@ export default class Veiculo extends BaseModel {
                               .where('id_user', user)
 
 
-        return dados
-    }
+        return dados;
+    };
 
     // Editar relação 
     public async editQuantidade(user,veiculo) {
@@ -89,5 +108,5 @@ export default class Veiculo extends BaseModel {
                                 .where('id', veiculo)
 
         return editado;
-    }
+    };
 }

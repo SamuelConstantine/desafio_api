@@ -25,13 +25,12 @@ import UsersController from 'App/Controllers/Http/UsersController'
 import User from 'App/Models/User'
 
 Route.get('/', async () => {
-  return { hello: 'world' }
+  return { hello: 'saasworld' }
 })
-
 
 Route.group(() => {
   // Cadastrar usuário
-  Route.post('users', 'UsersController.create')
+  Route.post('create', 'UsersController.create')
 
   // Verificar usuário
   Route.post('login', 'AuthController.store');
@@ -45,6 +44,9 @@ Route.group(() => {
   // Cadastrar veículos
   Route.post('create', 'VeiculosController.create')
 
+  // Filtrar por lon e lat
+  Route.post('coordenada/:lat/:lon', 'VeiculosController.coordenada')
+
   // Filtrar veículos
   Route.post('/filtro/:campo', 'VeiculosController.filtrado')
 
@@ -52,11 +54,12 @@ Route.group(() => {
   Route.get('/full', 'VeiculosController.veiculos')
 
   // Listar Carros relacionados ao usuário
-  Route.get('/user/:user', 'VeiculosController.veiculosUser')
+  Route.post('/user/:user', 'VeiculosController.veiculosUser')
 
   // Editar campos do veículo selecionado
   Route.post('/edit/:id', 'VeiculosController.editadarVeiculos')
 
   // Editar a relação do veículo ao usuário
   Route.post('/quantidade/:user/:id', 'VeiculosController.editQuantidade')
+  
 }).prefix('/veiculos');

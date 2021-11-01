@@ -13,14 +13,15 @@ export default class VeiculosController {
             url: `https://nominatim.openstreetmap.org/?format=json&addressdetails=1&q=${endereco}`
         });
 
-
         const user = await Veiculo.create({
             placa,
             descricao,
             cor, 
             modelo, 
             id_user,
-            endereco
+            endereco,
+            latitude: data[0].lat,
+            longitude: data[0].lon
         });
 
         return user;
@@ -41,7 +42,7 @@ export default class VeiculosController {
         let veiculo = new Veiculo();
         let campos = context.request.all();
         let id = context.params.id;  
-        return veiculo.editVeiculos(campos,id)
+        return veiculo.editVeiculos(campos,id);
     }
 
     public veiculosUser(context: HttpContextContract) {
@@ -54,7 +55,15 @@ export default class VeiculosController {
         let veiculo = new Veiculo();
         let user = context.params.user;
         let id = context.params.id;
-        return veiculo.editQuantidade(user,id)
+        return veiculo.editQuantidade(user,id);
+
+    }
+
+    public coordenada(context:HttpContextContract) {
+        let veiculo = new Veiculo();
+        let lat = context.params.lat;
+        let lon = context.params.lon;
+        return veiculo.latLon(lat, lon);
 
     }
 
