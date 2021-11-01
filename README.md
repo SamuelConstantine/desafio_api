@@ -19,15 +19,15 @@
 
             Route.post('coordenada/:lat/:lon', 'VeiculosController.coordenada')
 
-            Route.post('/filtro/:campo', 'VeiculosController.filtrado')
+            Route.post('filtro/:campo', 'VeiculosController.filtrado')
 
-            Route.get('/full', 'VeiculosController.veiculos')
+            Route.get('full', 'VeiculosController.veiculos')
 
-            Route.post('/user/:user', 'VeiculosController.veiculosUser')
+            Route.post('user/:user', 'VeiculosController.veiculosUser')
 
-            Route.post('/edit/:id', 'VeiculosController.editadarVeiculos')
+            Route.post('edit/:id', 'VeiculosController.editadarVeiculos')
 
-            Route.post('/quantidade/:user/:id', 'VeiculosController.editQuantidade')
+            Route.post('quantidade/:user/:id', 'VeiculosController.editQuantidade')
             
         }).prefix('/veiculos');
 

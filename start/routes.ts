@@ -48,18 +48,18 @@ Route.group(() => {
   Route.post('coordenada/:lat/:lon', 'VeiculosController.coordenada')
 
   // Filtrar veículos
-  Route.post('/filtro/:campo', 'VeiculosController.filtrado')
+  Route.post('filtro/:campo', 'VeiculosController.filtrado')
 
   // Listar todo os veículos
-  Route.get('/full', 'VeiculosController.veiculos')
+  Route.get('full', 'VeiculosController.veiculos')
 
   // Listar Carros relacionados ao usuário
-  Route.post('/user/:user', 'VeiculosController.veiculosUser')
+  Route.post('user/:user', 'VeiculosController.veiculosUser')
 
   // Editar campos do veículo selecionado
-  Route.post('/edit/:id', 'VeiculosController.editadarVeiculos')
+  Route.post('edit/:id', 'VeiculosController.editadarVeiculos')
 
   // Editar a relação do veículo ao usuário
-  Route.post('/quantidade/:user/:id', 'VeiculosController.editQuantidade')
+  Route.post('quantidade/:user/:id', 'VeiculosController.editQuantidade')
   
 }).prefix('/veiculos');
